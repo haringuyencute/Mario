@@ -15,12 +15,17 @@ public class SpecialCharetor : CharectorBase
         switch (hitType)
         {
             case HitType.RedMusrom:
-                //GamePlaycontroller.instance.ChangeCharector(CharectorType.Big);
-                Debug.LogError("Nam");
+                Debug.Log("An Nam");
                 break;
             case HitType.Flower:
-                GamePlaycontroller.instance.ChangeCharector(CharectorType.Special);
-                Debug.LogError("flower");
+                Debug.Log("An hoa");
+                break;
+            case HitType.Enemy:
+                GamePlaycontroller.instance.ChangeCharector(CharectorType.Big);
+                break;
+            case HitType.DeadZone:
+                GamePlaycontroller.instance.ChangeCharector(CharectorType.Big);
+                GamePlaycontroller.instance.HandleSetCurrentToFirstPosition();
                 break;
         }
     }

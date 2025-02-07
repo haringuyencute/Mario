@@ -22,6 +22,9 @@ public class GamePlaycontroller : MonoBehaviour
     [SerializeField] private Transform firtPost;
     [SerializeField] private ProCamera2D camera2D;
 
+    [SerializeField] private List<GameObject> lsLevelData;
+
+    public LevelData levelData;
 
     private void Awake()
     {
@@ -29,6 +32,9 @@ public class GamePlaycontroller : MonoBehaviour
     }
     private void Start()
     {
+        var levelObj = Resources.Load<GameObject>("Level_" + PlayerPrefs.GetInt("CurrentLevel",1));
+        levelData = Instantiate(levelObj).GetComponent<LevelData>();
+        
         currentCharector = Instantiate(smallCharectorPrefab);
         currentCharector.transform.position = firtPost.position;
         camera2D.AddCameraTarget(currentCharector.transform);
@@ -51,7 +57,6 @@ public class GamePlaycontroller : MonoBehaviour
                 break;
             case CharectorType.Big:
                 currentCharector = Instantiate(bigCharectorPrefab);
-               
                 break;
             case CharectorType.Special:
                 currentCharector = Instantiate(specialCharectorPrefab);
@@ -63,5 +68,8 @@ public class GamePlaycontroller : MonoBehaviour
         camera2D.AddCameraTarget(currentCharector.transform);
 
     }
-
+    public void HandleSetCurrentToFirstPosition()
+    {
+        currentCharector.transform.position = firtPost.position;
+    }
 }

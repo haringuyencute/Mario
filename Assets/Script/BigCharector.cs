@@ -15,11 +15,17 @@ public class BigCharector : CharectorBase
         switch (hitType)
         {
             case HitType.RedMusrom:
-                GamePlaycontroller.instance.ChangeCharector(CharectorType.Big);
+                Debug.Log("An Nam");
                 break;
             case HitType.Flower:
                 GamePlaycontroller.instance.ChangeCharector(CharectorType.Special);
-                Debug.LogError("flower");
+                break;
+            case HitType.Enemy:
+                GamePlaycontroller.instance.ChangeCharector(CharectorType.Small);
+                break;
+            case HitType.DeadZone:
+                GamePlaycontroller.instance.ChangeCharector(CharectorType.Small);
+                GamePlaycontroller.instance.currentCharector.Die();
                 break;
         }
     }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SmallCharector : CharectorBase
 {
+   
+
     public override void Init()
     {
        
@@ -20,6 +22,9 @@ public class SmallCharector : CharectorBase
                 GamePlaycontroller.instance.ChangeCharector(CharectorType.Special);
                 break;
             case HitType.Enemy:
+                GamePlaycontroller.instance.currentCharector.Die();
+                break;
+            case HitType.DeadZone:
                 GamePlaycontroller.instance.currentCharector.Die();
                 break;
         }

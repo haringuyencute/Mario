@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
+    bool isAction = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.tag == "Player")
         {
-            GamePlaycontroller.instance.currentCharector.Hit(HitType.Flower);
-            Destroy(gameObject);
+            if (!isAction)
+            {
+                isAction = true;
+                GamePlaycontroller.instance.currentCharector.Hit(HitType.Flower);
+                Destroy(gameObject);
+            }
         }
     }
 }

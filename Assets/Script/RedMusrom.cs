@@ -15,6 +15,8 @@ public class RedMusrom : MonoBehaviour
                 GamePlaycontroller.instance.currentCharector.Hit(HitType.RedMusrom);
                 Destroy(this.gameObject);
             }
+          
+
         }
     }
 }
